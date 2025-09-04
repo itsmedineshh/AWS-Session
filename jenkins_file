@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Code Checkout') {
+            steps {
+                git changelog: false, poll: false, url: 'https://github.com/itsmedineshh/AWS-Session.git'
+            }
+        }
+        stage('LIST FILE') {
+            steps {
+               sh 'ls'
+            }
+    }
+    stage('BUILD') {
+            steps {
+               sh 'npm install'
+               sh 'npm run start'
+            }
+    }
+}
+}
+
